@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360° Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px 50px 80px; /* Extra bottom padding for watermark */
+            margin: 0;
+            position: relative;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #333;
+        }
+        .video-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            width: 320px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+        .video-card video {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #000;
+        }
+        .video-card h3 {
+            margin: 15px 0 10px;
+            color: #222;
+            font-size: 1.1em;
+        }
+        .video-card a {
+            display: block;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0 0 12px 12px;
+            transition: background 0.3s;
+        }
+        .video-card a:hover {
+            background: #0056b3;
+        }
+
+        /* Watermark styles */
+        .watermark {
+            position: fixed;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+            pointer-events: none; /* Doesn't block clicks */
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <h1>My 360° Videos Library</h1>
+    <p>Click "Play in New Tab" to watch any video fullscreen.</p>
+
+    <div class="video-list" id="videoList">
+        <!-- Videos will be added here by JavaScript -->
+    </div>
+
+    <!-- Watermark - change "Your Name" to whatever you want -->
+    <div class="watermark">© 2026 Kamran</div>
+
+    <script>
+        // List of your videos with their direct Archive.org links
+        const videos = [
+            {
+                name: "Batman.mp4",
+                url: "https://ia801704.us.archive.org/34/items/360-videos_202601/Batman.mp4"
+            },
+            {
+                name: "Drift.mp4",
+                url: "https://ia801704.us.archive.org/34/items/360-videos_202601/Drift.mp4"
+            },
+            {
+                name: "ExploreDubai.mp4",
+                url: "https://ia801704.us.archive.org/34/items/360-videos_202601/ExploreDubai.mp4"
+            },
+            {
+                name: "HaloweenRollerCoaster.mp4",
+                url: "https://ia801704.us.archive.org/34/items/360-videos_202601/HaloweenRollerCoaster.mp4"  
+            },
+            {
+                name: "Horror.mp4",
+                url: "https://ia801704.us.archive.org/34/items/360-videos_202601/Horror.mp4" 
+            }
+        ];
+
+        const videoList = document.getElementById("videoList");
+        videoList.innerHTML = ""; // Clear placeholder
+
+        videos.forEach(video => {
+            const card = document.createElement("div");
+            card.className = "video-card";
+
+            card.innerHTML = `
+                <video preload="metadata" controls muted>
+                    <source src="${video.url}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>${video.name}</h3>
+                <a href="${video.url}" target="_blank">Play in New Tab →</a>
+            `;
+
+            videoList.appendChild(card);
+        });
+    </script>
+</body>
+</html>
