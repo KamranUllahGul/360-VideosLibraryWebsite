@@ -7,15 +7,15 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
             text-align: center;
-            padding: 50px 50px 80px; /* Extra bottom padding for watermark */
+            padding: 50px 50px 80px; 
             margin: 0;
             position: relative;
             min-height: 100vh;
+            background-image: url('https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg');
         }
         h1 {
-            color: #333;
+            color: #000000;
         }
         .video-list {
             display: flex;
@@ -69,7 +69,7 @@
             text-align: center;
             font-size: 14px;
             color: #999;
-            pointer-events: none; /* Doesn't block clicks */
+            pointer-events: none;
             z-index: 10;
         }
     </style>
@@ -83,7 +83,7 @@
     </div>
 
     <!-- Watermark - change "Your Name" to whatever you want -->
-    <div class="watermark">© 2026 Kamran</div>
+    <div class="watermark">© 2026 Kamran Ullah Gul</div>
 
     <script>
         // List of your videos with their direct Archive.org links
@@ -120,7 +120,7 @@
             card.innerHTML = `
                 <video preload="metadata" controls muted>
                     <source src="${video.url}" type="video/mp4">
-                    Your browser does not support the video tag.
+                    Your browser does not support the video Format.
                 </video>
                 <h3>${video.name}</h3>
                 <a href="${video.url}" target="_blank">Play in New Tab →</a>
